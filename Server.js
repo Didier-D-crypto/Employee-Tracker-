@@ -14,12 +14,13 @@ var connection = mysql.createConnection({
   port: 3306, //It is meant to send it to a different PORT
   user: "root",
   password: "yourRootPassword",
-  database: "employee",
+ 
 });
 
 // Initiate MySQL Connection.
-connection.connect(function(err) {
+connection.connect((err) =>{
   if (err) {
+
     console.error("error connecting: " + err.stack);
     return;
   }
@@ -27,9 +28,34 @@ connection.connect(function(err) {
 });
 
 connection.end(function(err){
+if (err) throw err; 
 
 });
   
+const app =express();
+
+app.get('/EmployeeTracker2', (req, res) =>{
+  let sql ='CREATE DATABASE EmployeeTracker2';
+  database.query(sql, (err, result)=>{
+    if (err) throw err; 
+    console.log(result);
+    res.send('Database created...');
+
+
+  })
+})
+
+//function (){
+ // inquirer
+  //.prompt({
+    //name:"npm start",
+    //type: "", 
+   // message: "What would you like to do?" 
+  //})
+  //.then(function(answer){
+    //var query = "SELECT "
+
+//}
 
 
 
