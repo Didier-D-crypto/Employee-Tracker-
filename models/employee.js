@@ -83,7 +83,7 @@ function departmentSearch() {
            .prompt({
              name: "findEmployee",
              type: "input",
-             message: "Look up all employees.",
+             message: "Look up all departments.",
              
            
         })
@@ -93,24 +93,21 @@ function departmentSearch() {
 
                  console.log(res);  
              for (let i=0; i<res.length; i++) {
-              
+                " First Name: " +
+                res[i].first_name +
+                " || Last Name: " +
+                res[i].last_name +
+                " || Role Id: " +
+                res[i].role_id +
+                "||  Manager Id: " +
+                res[i].manager_id
+             };
             }
-         })      
-             search()     
- }); 
+        ,)}); 
+           search()  
+
  } 
-          
 
-
-
-
-            // var query = "SELECT * FROM ? WHERE ?";
-            // connection.query(query, answer.artist, function (err, res) {
-            //     if (err) throw err;
-            //     for (var i = 0; i < res.length; i++) {
-            //         console.log("Position: " + res[i].position + " || " + res[i]. + " ||  " + res[i].year);
-            //     }
-            //     runSearch();
 
 
 
@@ -133,7 +130,24 @@ function employeeDepSearch() {
         Search();
     }
 
-// function EmpSpecSearch() {
+
+
+    function employeeDepSearch() {
+        connection.query("SELECT * FROM department", function (err, res) {
+            if (err) throw err;
+             for (let i = 0; i < res.length; i++) {
+                console.log(
+                res[i].name
+                
+                
+                
+                 );
+             }
+        });
+        Search();
+        }
+    
+//function EmpSpecSearch() {
 //         inquirer
 //             .prompt([
 //                 {
@@ -173,19 +187,17 @@ function employeeDepSearch() {
 //             });
 // 
 
-// function RoleSearch() {
-//         inquirer
-//             .prompt({
-//                 name: "song",
-//                 type: "input",
-//                 message: "What song would you like to look for?"
-//             })
-//             .then(function (answer) {
-//                 console.log(answer.);
-//                 connection.query("SELECT * FROM  WHERE ?", { : answer. }, function (err, res) {
-//                     if (err) throw err;
-//                     console.log(
-//                     );
-//                     runSearch();
-//                 });
-//
+function RoleSearch() {
+        
+    connection.query("SELECT * FROM role", function (err, res) {
+        if (err) throw err;
+         for (let i = 0; i < res.length; i++) {
+            console.log(
+            res[i].title + " | " +
+            res[i].salary  
+    
+             );
+         }
+    });
+    Search();
+    }
