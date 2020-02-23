@@ -99,7 +99,7 @@ function departmentSearch() {
              search()     
  }); 
  } 
-
+          
 
 
 
@@ -115,16 +115,23 @@ function departmentSearch() {
 
 
 function employeeDepSearch() {
-         var query = "SELECT employee FROM  GROUP BY employee HAVING count(*) > 1";
-        connection.query(query, function (err, res) {
-          if (err) throw err;
-          for (var i = 0; i < res.length; i++) {
-                               console.log(res[i].employee);
-           }
-          search();
+        connection.query("SELECT * FROM employee", function (err, res) {
+            if (err) throw err;
+            for (let i = 0; i < res.length; i++) {
+                console.log(
+                    " First Name: " +
+                    res[i].first_name +
+                    " || Last Name: " +
+                    res[i].last_name +
+                    " || Role Id: " +
+                    res[i].role_id +
+                    "||  Manager Id: " +
+                    res[i].manager_id
+                );
+                }
         });
+        Search();
     }
-
 
 // function EmpSpecSearch() {
 //         inquirer
