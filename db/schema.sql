@@ -2,49 +2,31 @@
 DROP DATABASE IF EXISTS EmployeeTracker_db;
 CREATE database EmployeeTracker_db;
 USE EmployeeTracker_db;
-CREATE TABLE department (
-  id INTEGER NOT NULL  PRIMARY KEY,
-  name VARCHAR(40)
-);
-CREATE TABLE role (
-  id INTEGER NOT NULL PRIMARY KEY,
-  title VARCHAR(50),
-  salary DECIMAL,
-  department_id INTEGER,
-  FOREIGN KEY (department_id) REFERENCES department(id)
-);
+
 CREATE TABLE employee (
-  id INTEGER NOT NULL PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(40),
-  role_id INTEGER,
-  manager_id INTEGER,
+   id INTEGER NOT NULL auto_increment PRIMARY KEY,
+   first_name VARCHAR(30),
+   last_name VARCHAR(40),
+   role_id INTEGER,
+   manager_id INTEGER,
+   salary DECIMAL,
+   department_id INTEGER,
+   department_name INTEGER, 
+   role_title VARCHAR(55),
+   
   FOREIGN KEY (role_id) REFERENCES role(id),
   FOREIGN KEY (manager_id) REFERENCES role(id)
 );
 USE EmployeeTracker_db;
-INSERT into department (name) VALUES ("Sales");
-INSERT into department (name) VALUES ("Legal");
-INSERT into department (name) VALUES ("Finance");
-INSERT into department (name) VALUES ("Engineering");
-INSERT into role (title, salary, department_id) VALUES ("Sales Lead", 100000, 1);
-INSERT into role (title, salary, department_id) VALUES ("Sales Person", 50000, 1);
-INSERT into role (title, salary, department_id) VALUES ("Lawyer", 100000, 2);
-INSERT into role (title, salary, department_id) VALUES ("Legal Team Lead", 900000, 2);
-INSERT into role (title, salary, department_id) VALUES ("Accountant", 100000, 3);
-INSERT into role (title, salary, department_id) VALUES ("Financial Advisor", 30000, 3);
-INSERT into role (title, salary, department_id) VALUES ("Dev Ops", 80000, 4);
-INSERT into role (title, salary, department_id) VALUES ("Programmer", 80000, 4);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Beatrice", "Pilgrim", 1, null);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Unic", "Shante", 2, 1);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Opal", "Violet", 2, 1);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Iowa", "Potato", 3, null);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Merchandise", "Nice", 4, 4);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Open", "Door", 5, 7);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Su", "Cereal", 5, null);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Xavier", "Brown", 5, 4);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Porter", "Vitrium",9, 7);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Roman", "Kilack", 7, 4);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Aria", "Dynasis", 5, 7);
+INSERT into employee (first_name, last_name, role_id, manager_id, salary, department_id, department_name, role_title) VALUES ("Beatrice", "Pilgrim", 1, null, 50000.01, 1, "Sales", "Sales Person");
+INSERT into employee (first_name, last_name, role_id, manager_id, |salary, department_id, department_name, role_title) VALUES ("Unic", "Shante", 2, 1, 3000.09, 3, 4, "Financial Advisor"), ;
+INSERT into employee (first_name, last_name, role_id, manager_id, |salary, department_id, department_name, role_title) VALUES ("Opal", "Violet", 2, 1, 9000.45, 2, 4, "Engineering");
+INSERT into employee (first_name, last_name, role_id, manager_id, |salary, department_id, department_name, role_title) VALUES ("Iowa", "Potato", 3, 3, null, 10000.01, 1, 2, "Engineering");
+INSERT into employee (first_name, last_name, role_id, manager_id, |salary, department_id, department_name, role_title) VALUES ("Merchandise", "Nice", 4, 4, 10000.01, 1, 2, "Sales Person");
+INSERT into employee (first_name, last_name, role_id, manager_id, |salary, department_id, department_name, role_title) VALUES ("Open", "Door", 5, 7, 10000.01, 1, 2, "Sales Marketing");
+INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Su", "Cereal", 5, null, 5,7, 10000.01, 1, 2, "Marketing");
+ INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Porter", "Vitrium",9, 7, 45000.12, 2 ,3, "System IT");
+INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Roman", "Kilack", 7, 4, 30000.50, 2, 1, "Data Analytics");
+INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Aria", "Dynasis", 5, 7, 90000.09, 1, 2, "Lead Engineer");
 
 

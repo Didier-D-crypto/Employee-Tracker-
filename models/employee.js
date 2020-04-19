@@ -34,19 +34,19 @@ function search() {
         .then(function (answer) {
             switch (answer.action) {
                 case "Add Department":
-                    departmentSearch();
+                        addDepartment();
                     break;
 
                 case "Find Employee by Department":
-                    employeeDepSearch();
+                    empDepSearch();
                     break;
 
                 case "Search for specific Employee":
-                    EmpSpecSearch();
+                    empSpecSearch();
                     break;
 
                 case "Find Employee Role":
-                    RoleSearch();
+                    roleSearch();
                     break;
 
                 case "Exit":
@@ -111,7 +111,7 @@ function departmentSearch() {
 
 
 
-function employeeDepSearch() {
+function empDepSearch() {
         connection.query("SELECT * FROM employee", function (err, res) {
             if (err) throw err;
             for (let i = 0; i < res.length; i++) {
